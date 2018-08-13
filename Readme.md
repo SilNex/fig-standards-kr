@@ -9,6 +9,7 @@ PHP 표준 가이드의 한국어 번역입니다.
   반대로 `Class Name`와 같이 번역이 __해석 없는 단어__ 와 __해석 있는 단어__ 가 같이 사용된 경우  
   `클래스 이름`과 같이 __해석 있는 단어__ 만 번역한다.
 * Underscores(밑줄)의 경우 상황의 맞게 언더바(`_`)와 밑줄을 병행하여 쓴다.
+* 커밋 메시지는 `PSR-{NUM} (번역된 라인)`으로 작성한다.
 
 [fig-standards]: https://github.com/php-fig/fig-standards
 [번역 진행 사항]: ttps://github.com/SilNex/fig-standards-kr/blob/master/Readme.md
