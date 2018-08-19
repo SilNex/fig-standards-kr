@@ -18,7 +18,7 @@ PHP 표준 가이드의 한국어 번역입니다.
 
 ## 번역 진행 사항
 - [x] PSR-0.md (2018-08-13)
-- [ ] PSR-1-basic-coding-standard.md
+- [x] PSR-1-basic-coding-standard.md (2018-08-15)
 - [ ] PSR-2-coding-style-guide-meta.md
 - [ ] PSR-2-coding-style-guide.md
 - [ ] PSR-3-logger-interface.md
