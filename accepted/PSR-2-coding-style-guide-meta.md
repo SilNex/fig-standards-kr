@@ -2,26 +2,25 @@
 
 ## 1. 요약
 
-The intent of this guide is to reduce cognitive friction when scanning code from different authors. It does so
-by enumerating a shared set of rules and expectations about how to format PHP code.
+이 가이드의 의의는 다른 사람이 만든 코드를 볼때 이해하기 힘듬을 줄이기 위함이다.  
+또한 PHP 코드 형식을 지정하는 방법에 대한 일련의 집합과 목표들을 나열한다.
+  
+이 규칙 스타일은 많고 다양한 프로젝트들의 공통점에서 나온것 이다.
+다양한 개발자들이 여러 프로젝트들을 통해서 협업 할때, 모든 프로젝트에서 하나의 가이드라인을 사용하는 것은 도움이된다.  
+그러므로, 이 가이드라인의 장점은 규칙 차제가 아니라 이러한 규칙을 공유함에 있다튶
 
-The style rules herein are derived from commonalities among the various member projects. When various authors
-collaborate across multiple projects, it helps to have one set of guidelines to be used among all those
-projects. Thus, the benefit of this guide is not in the rules themselves, but in the sharing of those rules.
+## 2. 투표
 
-## 2. Votes
+- **수락 투표:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
 
-- **Acceptance Vote:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
+## 3. 정오표
 
-## 3. Errata
+### 3.1 - 멀티-라인 인수들 (09/08/2013)
 
-### 3.1 - Multi-line Arguments (09/08/2013)
+하나 이상의 인수(배열 또는 익명함수와 같은)를 사용한다고 해서 인수 목록 자체가 분할되지 않으므로 4.6 절은 자동적으로 적용되지 않는다.
+배열과 익명함수는 여러줄(멀티-라인)에 걸쳐 작성될 수 있다.
 
-Using one or more multi-line arguments (i.e: arrays or anonymous functions) does not constitute
-splitting the argument list itself, therefore Section 4.6 is not automatically enforced. Arrays and anonymous
-functions are able to span multiple lines.
-
-The following examples are perfectly valid in PSR-2:
+다음 예제는 PSR-2에 맞는 예제이다. :
 
 ~~~php
 <?php
@@ -34,7 +33,6 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ~~~
 
-### 3.2 - Extending Multiple Interfaces (10/17/2013)
+### 3.2 - 다중 인터페이스 확장 (10/17/2013)
 
-When extending multiple interfaces, the list of `extends` should be treated the same as a list
-of `implements`, as declared in Section 4.1.
+다중 인터페이스 확장을 할때, `extends`의 목록은 4.1절 에서 선언한 것 처럼 `implements`의 목록과 동일하게 취급되아야 한다.
