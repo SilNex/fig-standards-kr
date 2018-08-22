@@ -1,4 +1,4 @@
-# 기본 표준 코딩 가이드
+# 기본 코딩 표준 가이드
 
 이 섹션은 공유 표준 PHP 코드 간의 상호 운용성을 보장하는데 필요한 표준 코딩 요소를 지켜야하는 것을 포함 한다. ~~불분명~~  
  ~~This section of the standard comprises what should be considered the standard

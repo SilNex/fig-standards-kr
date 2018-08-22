@@ -2,58 +2,58 @@
 
 이 가이드는 기본 코딩 표준인 [PSR-1]의 확장이다.
 
-The intent of this guide is to reduce cognitive friction when scanning code
-from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code.
+이 가이드의 의의는 다른 사람이 만든 코드를 볼때 이해하기 힘듬을 줄이기 위함이다.  
+또한 PHP 코드 형식을 지정하는 방법에 대한 일련의 집합과 목표들을 나열한다.
 
-The style rules herein are derived from commonalities among the various member
-projects. When various authors collaborate across multiple projects, it helps
-to have one set of guidelines to be used among all those projects. Thus, the
-benefit of this guide is not in the rules themselves, but in the sharing of
-those rules.
+이 규칙 스타일은 많고 다양한 프로젝트들의 공통점에서 나온것 이다.
+다양한 개발자들이 여러 프로젝트들을 통해서 협업 할때, 모든 프로젝트에서 하나의 가이드라인을 사용하는 것은 도움이된다.  
+그러므로, 이 가이드라인의 장점은 규칙 차제가 아니라 이러한 규칙을 공유함에 있다.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+이 문서에 "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", "OPTIONAL" 키워드 들은 [RFC 2119]에 설명된 대로 해석된다.
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
+[PSR-0]: https://github.com/silnex/fig-standards-kr/blob/master/accepted/PSR-0.md
+[PSR-1]: https://github.com/silnex/fig-standards-kr/blob/master/accepted/PSR-1-basic-coding-standard.md
 
-## 1. Overview
+## 1. 요약
 
-- Code MUST follow a "coding style guide" PSR [[PSR-1]].
+- **[MUST]** 코드는 반드시 "코딩 스타일 가이드" PSR [[PSR-1]]을 따라야 한다.
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- **[MUST]** 코드는 반드시 4개의 스페이스를 사용해 들여쓰기를 해야한다.
 
-- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
-  characters; lines SHOULD be 80 characters or less.
+- **[MUST NOT]** 한 행의 길이에 엄격한 제한을 둬선안된다.;  
+  **[MUST]** 제한이 필요하다면 120자로 엄격하지 않은 제한을 둬야한다.;  
+  **[SHOULD]** 한 행은 80자 이하가 좋다.
 
-- There MUST be one blank line after the `namespace` declaration, and there
-  MUST be one blank line after the block of `use` declarations.
+- **[MUST]** `namespace` 선언 뒤에 반드시 하나의 빈 행을 둬야한다.  
+  **[MUST]** 또한 `use` 선언 블록 뒤에 반드시 하나의 빈 행을 둬야한다. 
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- **[MUST]** 클래스를 여는 중괄호는 반드시 클래스 선언 다음 행에 둬야하며, 
+  닫는 중괄호는 본문 다음행에 둬야한다.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- **[MUST]** 메소드를 여는 중괄호는 반드시 메소드 선언 다음 행에 둬야하며,
+  닫는 중괄호는 본분 다음행에 둬야한다.
 
-- Visibility MUST be declared on all properties and methods; `abstract` and
-  `final` MUST be declared before the visibility; `static` MUST be declared
-  after the visibility.
+- **[MUST]** [가시성]은 모든 송성과 메소드에 반드시 선언되어야한다.  
+  **[MUST]** `abstract`와 `final`은 반드시 [가시성] 전에 선언되어야 한다.  
+  **[MUST]** `static`은 반드시 [가시성] 뒤에 선언 되어야 한다.
 
-- Control structure keywords MUST have one space after them; method and
-  function calls MUST NOT.
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+[가시성]:http://php.net/manual/kr/language.oop5.visibility.php
 
-- Opening parentheses for control structures MUST NOT have a space after them,
-  and closing parentheses for control structures MUST NOT have a space before.
+- **[MUST]** [제어구조] 키워드는 반드시 하나의 스페이스를 뒤에 작성되어야한다.   **[MUST NOT]** 메소드와 함수를 호출해선 안된다.
 
-### 1.1. Example
+- **[MUST]** [제어구조]를 여는 중괄호는 반드시 같은 라인에 둬야하며, 
+  닫는 중괄호는 본문 다음행에 둬야한다.
 
-This example encompasses some of the rules below as a quick overview:
+- **[MUST NOT]** [제어구조]를 여는 괄호 뒤에는 절대 공백을 둬선 안되며,  
+  **[MUST NOT]** [제어구조]를 닫는 괄호 앞에는 절대 공백을 둬선 안된다.
+
+[제어구조]:http://php.net/manual/kr/language.control-structures.php
+
+### 1.1. 예제
+
+이 예는 아래의 가이드 중 일부를 간략히 설명한다.:
 
 ~~~php
 <?php
@@ -83,21 +83,21 @@ class Foo extends Bar implements FooInterface
 }
 ~~~
 
-## 2. General
+## 2. 일반
 
-### 2.1. Basic Coding Standard
+### 2.1. 기본 코딩 표준 
 
-Code MUST follow all rules outlined in [PSR-1].
+**[MUST]** 코드는 반드시 "코딩 스타일 가이드" PSR [[PSR-1]]을 따라야 한다.
 
-### 2.2. Files
+### 2.2. 파일
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+**[MUST]** 모든 PHP 파일은 Unix LF (라인피드)를 사용해야한다.
 
-All PHP files MUST end with a single blank line.
+**[MUST]** 모든 PHP 파일은 하나의 공백 행으로 끝내야한다.
 
-The closing `?>` tag MUST be omitted from files containing only PHP.
+**[MUST]** 닫는 `?>` 태그는 PHP만 있는 파일에선 반드시 생략되어야한다.
 
-### 2.3. Lines
+### 2.3. 행
 
 There MUST NOT be a hard limit on line length.
 
@@ -118,7 +118,7 @@ There MUST NOT be more than one statement per line.
 
 Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
+> 주의: Using only spaces, and not mixing spaces with tabs, helps to avoid
 > problems with diffs, patches, history, and annotations. The use of spaces
 > also makes it easy to insert fine-grained sub-indentation for inter-line
 > alignment.
