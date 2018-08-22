@@ -118,7 +118,7 @@ There MUST NOT be more than one statement per line.
 
 Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
-> 주의: Using only spaces, and not mixing spaces with tabs, helps to avoid
+> 주의1: Using only spaces, and not mixing spaces with tabs, helps to avoid
 > problems with diffs, patches, history, and annotations. The use of spaces
 > also makes it easy to insert fine-grained sub-indentation for inter-line
 > alignment.
