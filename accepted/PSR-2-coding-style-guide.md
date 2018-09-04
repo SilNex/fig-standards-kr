@@ -43,7 +43,7 @@
 
 - **[MUST]** [제어구조] 키워드는 반드시 하나의 스페이스를 뒤에 작성되어야한다.   **[MUST NOT]** 메소드와 함수를 호출해선 안된다.
 
-- **[MUST]** [제어구조]를 여는 중괄호는 반드시 같은 라인에 둬야하며, 
+- **[MUST]** [제어구조]를 여는 중괄호는 반드시 같은 행에 둬야하며, 
   닫는 중괄호는 본문 다음행에 둬야한다.
 
 - **[MUST NOT]** [제어구조]를 여는 괄호 뒤에는 절대 공백을 둬선 안되며,  
@@ -93,56 +93,52 @@ class Foo extends Bar implements FooInterface
 
 **[MUST]** 모든 PHP 파일은 Unix LF (라인피드)를 사용해야한다.
 
-**[MUST]** 모든 PHP 파일은 하나의 공백 행으로 끝내야한다.
+**[MUST]** 모든 PHP 파일은 하나의 빈 줄로 끝내야한다.
 
 **[MUST]** 닫는 `?>` 태그는 PHP만 있는 파일에선 반드시 생략되어야한다.
 
 ### 2.3. 행
 
-There MUST NOT be a hard limit on line length.
+**[MUST NOT]** 행의 길이에는 제한은 두어선 안된다.
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+**[MUST]** 제약을 둔다면 120자 정도로 약한 제약을 둬야한다.
+**[MUST]** 스타일 검사기는 줄길이에 대해서 경고 혹은 에러 알람을 띄워선 안된다.
 
-Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
-be split into multiple subsequent lines of no more than 80 characters each.
+**[SHOULD NOT]** 행은 80자 이하인것이 좋다. 행은 길수록 나눠서 각각 80자 내외로 맞춰 여러줄로 표현하는 것이 좋다. 
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+**[MUST NOT]** 공백이 아닌 행의 끝에는 공백 문자가 있으면 안된다.
 
-Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+**[MAY]** 가독성을 높이기위해 공백행을 추가할 수 있다.
 
-There MUST NOT be more than one statement per line.
+**[MUST NOT]** 한줄에 하나이상의 문장이 있어선 안된다.
 
 ### 2.4. Indenting
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+**[MUST]** 들여쓰기는 탭이 아닌 반드시 4개의 스페이스로 들여쓰기 해야한다.
 
-> 주의1: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line
-> alignment.
+> 주의1: 스페이스와 탭을 섞어서 쓰지 말고 하나의 공백 표현 만을 사용해라,
+> 이는 비교(diff), 패치(patches), 기록(history), 주석(annotations)등에 도움을 준다.
+> 또한 공백을 사용하면 들여쓰기를 쉽게 세분화해 삽입 할 수 있다. 
 
-### 2.5. Keywords and True/False/Null
+### 2.5. 키워드(Keywords) 와 True/False/Null
 
-PHP [keywords] MUST be in lower case.
+**[MUST]** PHP [keywords]는 반드시 소문자로만 사용해야한다.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+**[MUST]** PHP 상수 `true`, `false`, `null`는 반드시 소문자로만 사용해야한다.
 
-[keywords]: http://php.net/manual/en/reserved.keywords.php
+[keywords]: http://php.net/manual/kr/reserved.keywords.php
 
-## 3. Namespace and Use Declarations
+## 3. 네임스페이스 와 Use 선언
 
-When present, there MUST be one blank line after the `namespace` declaration.
+**[MUST]** 위 키워드가 존재하는 경우, `namespace`을 선언한 다음에 반드시 하나의 빈 줄을 삽입해야한다.
 
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
+**[MUST]** 위 키워드가 존재하는 경우, 모든 `use` 선언은 `namespace` 선언 뒤에 와야한다.
 
-There MUST be one `use` keyword per declaration.
+**[MUST]** `use`는 반드시 하나의 키워드에 하나의 선언을한다.
 
-There MUST be one blank line after the `use` block.
+**[MUST]** 반드시 빈 줄 뒤에 `use` 단락이 와야한다.
 
-For example:
+예제:
 
 ~~~php
 <?php
@@ -152,21 +148,20 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-// ... additional PHP code ...
+// ... 추가적인 PHP 코드 ...
 
 ~~~
 
-## 4. Classes, Properties, and Methods
+## 4. 클래스, 속성, 메소드
 
-The term "class" refers to all classes, interfaces, and traits.
+단어 "class"는 모든 클래스, 인터페이스, 특성을 나타낸다.
 
-### 4.1. Extends and Implements
+### 4.1. Extends과 Implements
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+**[MUST]** `extends`와 `implements` 키워드는 클레스명과 같은 행에 선언되어야 한다.
 
-The opening brace for the class MUST go on its own line; the closing brace
-for the class MUST go on the next line after the body.
+**[MUST]** 클래스를 여는 중괄호는 반드시 클래스명 다음줄에 있어야한다;  
+닫는 중괄호는 반드시 클래스 본문 다음 행에 둬야한다.
 
 ~~~php
 <?php
@@ -182,9 +177,9 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 }
 ~~~
 
-Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, the first item in the list
-MUST be on the next line, and there MUST be only one interface per line.
+**[MAY]** `implements` 목록은 여러 행으로 둘 수도 있다. (다만, 각각의 줄은 한 번만 들여쓰기된다.)  
+**[MUST]** 만약 여러 행으로 둔다면 첫번째 항목은 반드시 다음 행에 둬야하며,
+오직 한 행에 하나의 인터페이스(interface)만 둘 수 있다.
 
 ~~~php
 <?php
