@@ -198,18 +198,17 @@ class ClassName extends ParentClass implements
 }
 ~~~
 
-### 4.2. Properties
+### 4.2. 속성
 
-Visibility MUST be declared on all properties.
+**[MUST]** 모든 속성은 [가시성](Visibility)을 반드시 선언해야 한다.
 
-The `var` keyword MUST NOT be used to declare a property.
+**[MUST NOT]** `var` 키워드는 속성 선언엔 사용해선 안된다.
 
-There MUST NOT be more than one property declared per statement.
+**[MUST NOT]** 한 명령문에 하나 이상의 속성을 선언해선 안된다.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+**[SHOULD NOT]** 보호 혹은 개별적인 가시성을 나타내기 위해 속성 이름앞에 밑줄을 두지 않는 것이 좋다.
 
-A property declaration looks like the following.
+속성 선언은 다음과 같다.
 
 ~~~php
 <?php
@@ -221,20 +220,20 @@ class ClassName
 }
 ~~~
 
-### 4.3. Methods
+### 4.3. 메소드
 
-Visibility MUST be declared on all methods.
+**[MUST]** 모든 속성은 [가시성]을 반드시 선언해야 한다.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+**[SHOULD NOT]** 보호된 혹은 개별적인 가시성을 나타내기 위해 메소드 이름 앞에 밑줄을 두지 않는 것이 좋다.
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+**[MUST NOT]** 메소드 이름뒤에 공백을 둬선 안된다.  
+**[MUST]** 여는 중괄호는 메소드 이름 행 아래에 둬야하며, 
+닫는 괄호는 본문 다음 행에 둬야한다.  
+**[MUST NOT]** 절대 여는 괄호 뒤에 공백을 둬선 안되며,
+닫는 괄호 전에도 공백을 둬선 안된다.
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+메소든 선언은 다음을 따른다.
+괄호, 쉼표, 공백 및 중괄호의 배치에 유의해야한다.
 
 ~~~php
 <?php
