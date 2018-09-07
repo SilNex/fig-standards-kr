@@ -248,13 +248,12 @@ class ClassName
 }
 ~~~
 
-### 4.4. Method Arguments
+### 4.4. 메소드 인수
 
-In the argument list, there MUST NOT be a space before each comma, and there
-MUST be one space after each comma.
+**[MUST NOT]** 인수 목록은 각각의 쉼표(,)앞에 공백을 둬선 안되며,  
+**[MUST]** 반드시 각각의 쉼표(,)뒤에 공백을 둬야한다.
 
-Method arguments with default values MUST go at the end of the argument
-list.
+**[MUST]** 기본값을 가진 메소드 인수들은 반드시 목록의 끝에 와야한다.
 
 ~~~php
 <?php
@@ -269,13 +268,11 @@ class ClassName
 }
 ~~~
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+**[MAY]** 인수 목록은 여러 행으로 나뉠수도 있으며, 행 별로 한번의 들여 쓰여질수 있다.  
+**[MUST]** 여러줄로 표시할 때는 첫번째 인수는 반드시 다음 행에 있어야 하며, 
+오직 한 행에 하나의 인수만이 존재 할 수 있다.
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
+**[MUST]** 인수 목록을 여러 행으로 나눌때, 닫는 괄호와 여는 중괄호 사이에는 한 줄의 빈 행을 둬야한다.
 
 ~~~php
 <?php
@@ -293,13 +290,11 @@ class ClassName
 }
 ~~~
 
-### 4.5. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final`, `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+**[MUST]** `abstract`와 `final`이 있다면, 반드시 [가시성] 선언 앞에 와야한다.
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+**[MUST]** `static`이 있다면, 반드시 [가시성] 선언 뒤에 와야한다.
 
 ~~~php
 <?php
@@ -318,13 +313,12 @@ abstract class ClassName
 }
 ~~~
 
-### 4.6. Method and Function Calls
+### 4.6. 메소드와 함수 콜
 
-When making a method or function call, there MUST NOT be a space between the
-method or function name and the opening parenthesis, there MUST NOT be a space
-after the opening parenthesis, and there MUST NOT be a space before the
-closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+**[MUST NOT]** 메소드 혹은 함수 콜을 만들때, 메소드 혹은 함수명과 여는 괄호 사이에는 절대 공백을 둬선 안되며, 여는 괄호 뒤에 공백을 둬서도 안된다.
+또한 닫는 괄호 앞에도 절대 공백을 둬선 안된다.  
+인수 리스트는 절대 각각의 쉼표(,) 앞에 공백이 들어가선 안되며,  
+**[MUST]** 반드시 각각의 쉼표(,) 뒤에 공백이 들어가야한다.
 
 ~~~php
 <?php
@@ -333,9 +327,9 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ~~~
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+**[MAY]** 인수 목록은 여러 행으로 나뉠수도 있으며, 행 별로 한번의 들여 쓰여질수 있다.  
+**[MUST]** 여러줄로 표시할 때는 첫번째 인수는 반드시 다음 행에 있어야 하며, 
+오직 한 행에 하나의 인수만이 존재 할 수 있다.
 
 ~~~php
 <?php
@@ -346,27 +340,23 @@ $foo->bar(
 );
 ~~~
 
-## 5. Control Structures
+## 5. 제어 구조체
 
-The general style rules for control structures are as follows:
+일반적인 제어 구조체 규칙은 다음을 따른다.:
 
-- There MUST be one space after the control structure keyword
-- There MUST NOT be a space after the opening parenthesis
-- There MUST NOT be a space before the closing parenthesis
-- There MUST be one space between the closing parenthesis and the opening
-  brace
-- The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
+- **[MUST]** 반드시 제어 구조체 키워드 뒤에 하나의 공백을 둔다.
+- **[MUST NOT]** 절대 여는 괄호 뒤에 공백을 둬선 안된다.
+- **[MUST NOT]** 절대 닫는 괄호 앞에 공백을 둬선 언된다.
+- **[MUST]** 반드시 닫는 괄호와 여는 중괄호 사이에는 하나의 공백이 있어야한다.
+- **[MUST]** 반드시 구조체 본문은 한번 들여쓰기 되어야 한다.
+- **[MUST]** 반드시 닫는 중괄호는 본문 다음 행에 둬야한다.
 
-The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
-lines get added to the body.
+**[MUST]** 구조체의 본문은 반드시 중괄호를 사용해야한다. 이는 구조체를 어떻게 보는지 표준화 하고 새로운 행이 본문에 추가 될 때에 오류 발생 가능성을 낮춰준다.
 
 ### 5.1. `if`, `elseif`, `else`
 
-An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
-closing brace from the earlier body.
+`if` 구조는 다음과 같다. 괄호, 공백, 중괄호의 위치에 주의 해야한다.
+그리고 `else`와 `elseif`는 이전 본문을 닫는 중괄호와 같은 라인에 있어야한다.
 
 ~~~php
 <?php
@@ -379,16 +369,14 @@ if ($expr1) {
 }
 ~~~
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords look like single words.
+**[SHOULD]** 모든 키워드는 한 단어인 것이 보기 좋기에, `else if`키워드 보다 키워드 `elseif`를 쓰는것이 좋다.
 
 ### 5.2. `switch`, `case`
 
-A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
-indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when fall-through is intentional in a non-empty `case` body.
+`switch` 구조는 다음과 같다. 괄호, 공백, 중괄호의 위치에 주의 해야한다.  
+**[MUST]** `case` 문단은 `switch`보다 반드시 한번 들여쓰기 해야한다.
+그리고 `break` 키워드 (또는 다른 종료 키워드)는 반드시 `case` 본문과 같은 들여쓰기를 해야한다.  
+**[MUST]** 비여 있지 않은 `case`본문에 의도적으로 `break` (또는 다른 종료 키워드)를 넣지 않은경우 (fall-through) `// no break`를 넣어줘야한다.
 
 ~~~php
 <?php
