@@ -20,7 +20,7 @@ PHP 표준 가이드의 한국어 번역입니다.
 - [x] PSR-0.md (2018-08-13)
 - [x] PSR-1-basic-coding-standard.md (2018-08-15)
 - [x] PSR-2-coding-style-guide-meta.md (2018-08-20)
-- [ ] PSR-2-coding-style-guide.md
+- [x] PSR-2-coding-style-guide.md (2018-09-10)
 - [ ] PSR-3-logger-interface.md
 - [ ] PSR-4-autoloader-examples.md
 - [ ] PSR-4-autoloader-meta.md
