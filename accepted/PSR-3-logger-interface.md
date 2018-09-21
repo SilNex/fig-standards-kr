@@ -31,105 +31,84 @@
 
 ### 1.2 메시지
 
-- Every method accepts a string as the message, or an object with a
-  `__toString()` method. Implementors MAY have special handling for the passed
-  objects. If that is not the case, implementors MUST cast it to a string.
+- 모든 메소드는 문자열로된 메시지를 받거나, 또는 `__toString()` 메소드를 가진 객체를 받는다.  
+  **[MAY]** 구현자는 전달된 객체를 따로 처리 할 수 있다.  
+  **[MUST]** 만약 그렇지 않다면 구현자는 반드시 문자열로 변환 해야한다.
 
-- The message MAY contain placeholders which implementors MAY replace with
-  values from the context array.
+- **[MAY]** 메시지는 구현자들이 컨텍스트 배열값으로 변환 할 수 있는 자리표시자를 포함할 수도 있다.
 
-  Placeholder names MUST correspond to keys in the context array.
+  **[MUST]** 자리표시자명은 반드시 컨텍스트 배열의 키에 해당한다.
 
-  Placeholder names MUST be delimited with a single opening brace `{` and
-  a single closing brace `}`. There MUST NOT be any whitespace between the
-  delimiters and the placeholder name.
+  **[MUST]** 자리표시자명은 반드시 한정된 단일 여는 중괄호 `{` 와 닫는 중괄호 `}` 와 함께 써야한다.  
+  **[MUST NOT]** 절대 어떠한 공백도 구분 기호나 자리표시자명 사이에 둬어선 안된다.
 
-  Placeholder names SHOULD be composed only of the characters `A-Z`, `a-z`,
-  `0-9`, underscore `_`, and period `.`. The use of other characters is
-  reserved for future modifications of the placeholders specification.
+  **[SHOULD]** 자리표자명은 오직 `A-Z`, `a-z`, `0-9`, `_`, `.` 문자로만 구성되어야 한다. 이 외에 문자사용은 자리표자의 향후 수정을 위해 예약해둡니다.
 
-  Implementors MAY use placeholders to implement various escaping strategies
-  and translate logs for display. Users SHOULD NOT pre-escape placeholder
-  values since they can not know in which context the data will be displayed.
+  **[MAY]** 구현자는 자리표지라를 사용하여 다양한 이스케이프 전략을 구현하고 표시를 위해 로그를 변활 할 수 있다.  
+  **[SHOULD NOT]** 사용자는 데이터가 표시 될 컨텍스트를 알 수 없으므로 자리표시자 값을 미리 이스케이프해서는 안된다
 
-  The following is an example implementation of placeholder interpolation
-  provided for reference purposes only:
+다음은 참조용으로만 제공되는 자리표시자 보간법(interpolation)의 구현 예입니다.
 
   ~~~php
   <?php
 
   /**
-   * Interpolates context values into the message placeholders.
+   * 메시지 자리표시자에 컨텍스트 값을 보간한다.
    */
   function interpolate($message, array $context = array())
   {
-      // build a replacement array with braces around the context keys
+      // 컨텍스트 키 주위에 중괄호로 대체 배열을 작성해라.
       $replace = array();
       foreach ($context as $key => $val) {
-          // check that the value can be casted to string
+          // 값을 문자열에 형변환 할 수 있는지 확인해라.
           if (!is_array($val) && (!is_object($val) || method_exists($val, '__toString'))) {
               $replace['{' . $key . '}'] = $val;
           }
       }
 
-      // interpolate replacement values into the message and return
+      // 대체 값을 메시지로 보간하고 리턴한다.
       return strtr($message, $replace);
   }
 
-  // a message with brace-delimited placeholder names
+  // 중괄호로 구분 된 자리표시자 이름이있는 메시지
   $message = "User {username} created";
 
-  // a context array of placeholder names => replacement values
+  // 자리표시자명의 컨텍스트 배열 => 대체 값
   $context = array('username' => 'bolivar');
 
-  // echoes "User bolivar created"
+  // 출력값: "User bolivar created"
   echo interpolate($message, $context);
   ~~~
 
 ### 1.3 Context
 
-- Every method accepts an array as context data. This is meant to hold any
-  extraneous information that does not fit well in a string. The array can
-  contain anything. Implementors MUST ensure they treat context data with
-  as much lenience as possible. A given value in the context MUST NOT throw
-  an exception nor raise any php error, warning or notice.
+- 모든 메소드는 배열을 컨텍스트 데이터로 허용한다. 이것은 문자열에 잘 맞지 않는 불필요한 정보를 포함하기 위한것이다. 배열은 어떠한 것이든 담을 수 있다.  
+  **[MUST]** 구현자는 반드시 가능한 많이 컨테스트데이터를 수용해 처리해야한다.  
+  **[MUST NOT]** 컨텍스트에서 주어진 값은 예외를 던지거나 PHP error, warning, notice를 던저선(throw)안된다.
 
-- If an `Exception` object is passed in the context data, it MUST be in the
-  `'exception'` key. Logging exceptions is a common pattern and this allows
-  implementors to extract a stack trace from the exception when the log
-  backend supports it. Implementors MUST still verify that the `'exception'`
-  key is actually an `Exception` before using it as such, as it MAY contain
-  anything.
+- **[MUST]** 만약 콘텍스트 데이터 안에 `Exception` 객체를 전달됬다면, 반드시 `'exception'`키가 있어야 한다. 로깅예외는 일반적인 패턴이며, 이로 인해 구현자가 로그백엔드를 지원할 때 예외에서 스택 추적을 추출할 수 있다.
+  **[MUST]** 구현자는 무엇이든 포함 할 수 있기 때문에 `'exception'`키가 실제로 사용하기전에 `Exception`인지 반드시 확인해야한다.
 
-### 1.4 Helper classes and interfaces
+### 1.4 헬퍼 클래스와 인터페이스
 
-- The `Psr\Log\AbstractLogger` class lets you implement the `LoggerInterface`
-  very easily by extending it and implementing the generic `log` method.
-  The other eight methods are forwarding the message and context to it.
+- `Psr\Log\AbstractLogger` 클래스를 확장하고 일반적인 `log` 메소드를 구현함으로써 `LoggerInterface`를 쉽게 구현할 수 있게 한다. 다른 8개의 메소드들은 메시지와 콘텍스트를 전달하는 것들이다.
 
-- Similarly, using the `Psr\Log\LoggerTrait` only requires you to
-  implement the generic `log` method. Note that since traits can not implement
-  interfaces, in this case you still have to implement `LoggerInterface`.
+- 유사하게 `Psr\Log\LoggerTrait`는 오직 일반적인 `log` 메소드를 사용해서 구현할 수 있다. 특성은 인터페이스를 구현할수없으므로 이 경우에는 `LoggerInterface`를 구현해야한다.
 
-- The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
-  used by users of the interface to provide a fall-back "black hole"
-  implementation if no logger is given to them. However, conditional logging
-  may be a better approach if context data creation is expensive.
+- `Psr\Log\NullLogger`는 인터페이스와 함께 제공된다.   
+  **[MAY]** 로거가 제공되지 않으면, 폴백(fall-back) "블랙홀" 구현을 제공하기위해 인터페이스를 사용자이 사용할 수 있습니다. ~~(불분명)~~  
+  (It MAY be used by users of the interface to provide a fall-back "black hole" implementation if no logger is given to them.)  
+  그러나 컨텍스트 데이터 작성이 비용면에서 조건부 로딩이 더 나은 접근 방법일 수 있다.
 
-- The `Psr\Log\LoggerAwareInterface` only contains a
-  `setLogger(LoggerInterface $logger)` method and can be used by frameworks to
-  auto-wire arbitrary instances with a logger.
+- `Psr\Log\LoggerAwareInterface`는 `setLogger(LoggerInterface $logger)` 메소드만을 포함하고 있으며, 임의의 인스턴스를 로거로 오토 와이어(auto-wire)하기 위해 프레임워크에서 사용할 수 있다.
 
-- The `Psr\Log\LoggerAwareTrait` trait can be used to implement the equivalent
-  interface easily in any class. It gives you access to `$this->logger`.
+- `Psr\Log\LoggerAwareTrait` 특성은 모든 클래스에서 쉽게 동일한 인터페이스를 구현하는데 사용할 수 있으며, `$this->logger`로 접근 할 수있다.
 
-- The `Psr\Log\LogLevel` class holds constants for the eight log levels.
+- `Psr\Log\LogLevel` 클래스는 8개의 로그레벨에 대한 상수를 가지고 있다.
 
-## 2. Package
+## 2. 패키지
 
-The interfaces and classes described as well as relevant exception classes
-and a test suite to verify your implementation are provided as part of the
-[psr/log](https://packagist.org/packages/psr/log) package.
+설명된 인터페이스와 클래스는 물론 관련 예외 클래스 및 구현을 확인하는 테스트 세트가 [psr/log](https://packagist.org/packages/psr/log) 패키지의 일부로 제공됩니다.
 
 ## 3. `Psr\Log\LoggerInterface`
 
