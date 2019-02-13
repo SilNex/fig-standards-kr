@@ -1,5 +1,5 @@
 # https://github.com/SilNex/fig-standards 로 대체 되었습니다
-
+Go to https://github.com/SilNex/fig-standards
 
 
 
