@@ -1,3 +1,12 @@
+# https://github.com/SilNex/fig-standards 로 대체 되었습니다
+
+
+
+
+
+
+  
+
 # PHP Standards Recommendations ver KOREAN
 PHP 표준 가이드의 한국어 번역입니다.
 
